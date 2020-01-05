@@ -1,5 +1,6 @@
 <template>
   <div class="parks">
+    <h1>Parks</h1>
     <stats v-bind:statsFor="parks" />
     <park v-for="park in parks" v-bind:key="park.name" v-bind:park="park" />
   </div>

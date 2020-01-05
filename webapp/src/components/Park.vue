@@ -1,6 +1,6 @@
 <template>
   <div class="park">
-    <h1>{{park.name}}</h1>
+    <h2>{{park.name}}</h2>
     <stats v-bind:statsFor="park" class="collapsible"/>
     <land v-for="land in park.lands" v-bind:key="land.name" v-bind:land="land" />
   </div>

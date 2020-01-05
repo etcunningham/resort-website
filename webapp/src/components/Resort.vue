@@ -41,4 +41,10 @@ li {
 a {
   color: #35495E;
 }
+
+.resort {
+  padding-left:5%;
+  padding-right:5%;
+  padding-bottom:5%;
+}
 </style>
