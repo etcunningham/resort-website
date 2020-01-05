@@ -1,6 +1,7 @@
 <template>
   <div class="stats">
-    <b-table :items="stats"/>
+    <h6 align="left"><b>Total Attractions:</b> {{totalAttractions}} </h6>
+    <b-table :items="attractionsByTicket"/>
   </div>
 </template>
 
@@ -10,7 +11,7 @@ export default {
   name: 'stats',
   props: ['statsFor'],
   data() {
-    const stats = {
+    const attractionsByTicket = {
       A: 0,
       B: 0,
       C: 0,
@@ -21,18 +22,24 @@ export default {
     const searchForTicketsRecursive = (obj, ticket) => {
       if (typeof (obj) === 'object' && obj !== null) {
         Object.values(obj).forEach((value) => {
-          if (value === ticket) stats[ticket] += 1;
+          if (value === ticket) attractionsByTicket[ticket] += 1;
           else searchForTicketsRecursive(value, ticket);
         });
       }
     };
 
-    Object.keys(stats).forEach((ticketType) => {
+    Object.keys(attractionsByTicket).forEach((ticketType) => {
       searchForTicketsRecursive(this.statsFor, ticketType);
     });
 
+    let totalAttractions = 0;
+    Object.values(attractionsByTicket).forEach((value) => {
+      totalAttractions += value;
+    });
+
     return {
-      stats: [stats],
+      attractionsByTicket: [attractionsByTicket],
+      totalAttractions,
     };
   },
 };
