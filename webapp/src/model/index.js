@@ -1,51 +1,66 @@
-enum ticketType {
-  A = 'A',
-  B = 'B',
-  C = 'C',
-  D = 'D',
-  E = 'E',
-}
+const ticketType = {
+  A: 'A',
+  B: 'B',
+  C: 'C',
+  D: 'D',
+  E: 'E',
+};
 
-enum attractionType {
-  animatronic = 'animatronic show',
-  transportation = 'transportation',
-  walkthrough = 'walk through',
-  play = 'play area',
-  boat = 'boat ride',
-  dark = 'dark ride',
-  coaster = 'rollercoaster',
-  film = 'film',
-  show = 'show',
-  simulator = 'simulator',
-  shooter = 'shooter',
-  flat = 'flat ride',
-  character = 'meet & greet',
-  other = 'other',
-}
+const attractionType = {
+  animatronic: 'Animatronic Show',
+  transportation: 'Transportation',
+  walkthrough: 'Walkthrough',
+  play: 'Play Area',
+  boat: 'Boat Ride',
+  dark: 'Dark Ride',
+  coaster: 'Rollercoaster',
+  film: 'Film',
+  show: 'Show',
+  simulator: 'Simulator',
+  shooter: 'Shooter',
+  flat: 'Flat Ride',
+  character: 'Meet & Greet',
+  other: 'Other',
+};
 
-enum diningType {
-  table = 'table service',
-  snack = 'quick service - snack',
-  quick = 'quick service - meal',
-  buffet = 'buffet',
-  character = 'character dining',
-  coffee = 'coffee shop'
-}
+const diningType = {
+  table: 'Table Service',
+  snack: 'Quick Service - Snack',
+  quick: 'Quick Service - Meal',
+  buffet: 'Buffet',
+  character: 'Character Dining',
+  coffee: 'Coffee Shop',
+};
 
 class Attraction {
-  constructor(public name: string, public ticket: ticketType, public type: attractionType, public description?: string) { }
+  constructor(name, ticket, type, description) {
+    this.name = name || 'TBD';
+    this.ticket = ticket;
+    this.type = type || 'TBD';
+    if (description) this.description = description;
+  }
 }
 
 class Restaurant {
-  constructor(public name: string, public type: diningType, public description?: string) { }
+  constructor(name, type, description) {
+    this.name = name || 'TBD';
+    this.type = type || 'TBD';
+    if (description) this.description = description;
+  }
 }
 
 class Shop {
-  constructor(public name: string, public description?: string) { }
+  constructor(name, description) {
+    this.name = name || 'TBD';
+    if (description) this.description = description;
+  }
 }
 
 class Other {
-  constructor(public name: string, public description?: string) { }
+  constructor(name, description) {
+    this.name = name || 'TBD';
+    if (description) this.description = description;
+  }
 }
 
 export default {
@@ -54,7 +69,7 @@ export default {
       name: 'Disneyland Park',
       lands: [
         {
-          name: 'Main Street',
+          name: 'Main Street, USA',
           sublands: [
             {
               name: 'Main Street',
@@ -62,89 +77,89 @@ export default {
                 new Attraction(
                   'Main Street Vehicles',
                   ticketType.B,
-                  attractionType.transportation
+                  attractionType.transportation,
                 ),
                 new Attraction(
                   'Disneyland Railroad',
                   ticketType.C,
-                  attractionType.transportation
+                  attractionType.transportation,
                 ),
                 new Attraction(
                   'The Walt Disney Story',
                   ticketType.B,
-                  attractionType.walkthrough
+                  attractionType.walkthrough,
                 ),
                 new Attraction(
                   'Penny Arcade',
                   ticketType.A,
-                  attractionType.play
+                  attractionType.play,
                 ),
                 new Attraction(
                   'Main Street Cinema',
                   ticketType.A,
-                  attractionType.film
-                )
+                  attractionType.film,
+                ),
               ],
               dining: [
                 new Restaurant(
                   'Walt\'s',
-                  diningType.table
+                  diningType.table,
                 ),
                 new Restaurant(
                   'Plaza Restaurant',
-                  diningType.table
+                  diningType.table,
                 ),
                 new Restaurant(
                   'Gibson Girl Ice Cream Parlor',
-                  diningType.snack
+                  diningType.snack,
                 ),
                 new Restaurant(
                   'Main Street Confectionary',
-                  diningType.snack
+                  diningType.snack,
                 ),
                 new Restaurant(
                   'Main Street Bakery',
-                  diningType.snack
+                  diningType.snack,
                 ),
                 new Restaurant(
                   'Coffee House',
-                  diningType.coffee
+                  diningType.coffee,
                 ),
                 new Restaurant(
                   'Crystal Palace',
-                  diningType.buffet
-                )
+                  diningType.buffet,
+                ),
               ],
               shopping: [
                 new Shop(
-                  'The Emporium'
+                  'The Emporium',
                 ),
                 new Shop(
                   'Magic Shop',
                 ),
                 new Shop(
-                  'Crystal Arts'
+                  'Crystal Arts',
                 ),
                 new Shop(
-                  'Music Shop'
+                  'Music Shop',
                 ),
                 new Shop(
-                  'Disney Clothiers, Ltd.'
+                  'Disney Clothiers, Ltd.',
                 ), new Shop(
-                  'Flower Shop'
+                  'Flower Shop',
                 ),
                 new Shop(
-                  'Uptown Jewelers'
-                )
+                  'Uptown Jewelers',
+                ),
               ],
               other: [
                 new Other(
-                  'City Hall'
+                  'City Hall',
                 ),
                 new Other(
-                  'Firehouse'
-                )
-              ]
+                  'Firehouse',
+                ),
+              ],
             },
             {
               name: 'Liberty Street',
@@ -152,36 +167,36 @@ export default {
                 new Attraction(
                   'The Hall of Presidents',
                   ticketType.C,
-                  attractionType.animatronic
-                )
+                  attractionType.animatronic,
+                ),
               ],
               dining: [
                 new Restaurant(
                   'Liberty Tavern',
-                  diningType.quick
-                )
+                  diningType.quick,
+                ),
               ],
               shopping: [
                 new Shop(
-                  'Christmas Shop'
+                  'Christmas Shop',
                 ),
                 new Shop(
-                  'Glassblower\'s'
+                  'Glassblower\'s',
                 ),
                 new Shop(
-                  'Candle Shop'
+                  'Candle Shop',
                 ),
                 new Shop(
-                  'Blacksmith'
-                )
+                  'Blacksmith',
+                ),
               ],
               other: [
                 new Other(
-                  'Liberty Park'
-                )
-              ]
-            }
-          ]
+                  'Liberty Park',
+                ),
+              ],
+            },
+          ],
         },
         {
           name: 'Adventureland',
@@ -192,26 +207,26 @@ export default {
                 new Attraction(
                   'African Stage Show',
                   ticketType.B,
-                  attractionType.show
-                )
+                  attractionType.show,
+                ),
               ],
               dining: [
                 new Restaurant(
                   '',
-                  diningType.snack
+                  diningType.snack,
                 ),
               ],
               shopping: [
                 new Shop(
-                  ''
+                  '',
                 ),
                 new Shop(
-                  ''
+                  '',
                 ),
                 new Shop(
-                  'Bazaar'
-                )
-              ]
+                  'Bazaar',
+                ),
+              ],
             },
             {
               name: 'Arabia',
@@ -219,22 +234,22 @@ export default {
                 new Attraction(
                   '1001 Nights',
                   ticketType.D,
-                  attractionType.dark
+                  attractionType.dark,
                 ),
                 new Attraction(
                   'Aladdin: The Musical',
                   ticketType.D,
-                  attractionType.show
-                )
+                  attractionType.show,
+                ),
               ],
               dining: [
 
               ],
               shopping: [
                 new Shop(
-                  'Cave of Wonders'
-                )
-              ]
+                  'Cave of Wonders',
+                ),
+              ],
             },
             {
               name: 'Polynesia',
@@ -242,56 +257,56 @@ export default {
                 new Attraction(
                   'Indiana Jones Adventure',
                   ticketType.E,
-                  attractionType.dark
+                  attractionType.dark,
                 ),
                 new Attraction(
                   'Jungle Cruise',
                   ticketType.D,
-                  attractionType.boat
+                  attractionType.boat,
                 ),
                 new Attraction(
                   'Enchanted Tiki Room',
                   ticketType.C,
-                  attractionType.animatronic
+                  attractionType.animatronic,
                 ),
                 new Attraction(
                   'Swiss Family Treehouse',
                   ticketType.B,
-                  attractionType.walkthrough
+                  attractionType.walkthrough,
                 ),
                 new Attraction(
                   'Exploration Trails',
                   ticketType.A,
-                  attractionType.walkthrough
+                  attractionType.walkthrough,
                 ),
               ],
               dining: [
                 new Restaurant(
                   'Tropical Terrace',
-                  diningType.quick
+                  diningType.quick,
                 ),
                 new Restaurant(
                   'Sunshine Veranda',
-                  diningType.table
+                  diningType.table,
                 ),
                 new Restaurant(
                   'Dole Whip Stand',
-                  diningType.snack
-                )
+                  diningType.snack,
+                ),
               ],
               shopping: [
                 new Shop(
-                  'Adventure Trading Co'
+                  'Adventure Trading Co',
                 ),
                 new Shop(
-                  'Island Traders'
-                )
+                  'Island Traders',
+                ),
               ],
               other: [
                 new Other(
-                  'Picnic Area'
-                )
-              ]
+                  'Picnic Area',
+                ),
+              ],
             },
             {
               name: 'Dinosaurs',
@@ -299,92 +314,87 @@ export default {
                 new Attraction(
                   'The Boneyard',
                   ticketType.B,
-                  attractionType.play
+                  attractionType.play,
                 ),
                 new Attraction(
                   'Countdown to Extinction',
                   ticketType.D,
-                  attractionType.simulator
+                  attractionType.simulator,
                 ),
                 new Attraction(
                   'Volcano Explorations',
                   ticketType.E,
-                  attractionType.coaster
+                  attractionType.coaster,
                 ),
                 new Attraction(
                   'Exploration Trails',
                   ticketType.A,
-                  attractionType.walkthrough
-                )
+                  attractionType.walkthrough,
+                ),
               ],
               dining: [
                 new Restaurant(
                   'Dinosaur Canteen',
-                  diningType.quick
-                )
+                  diningType.quick,
+                ),
               ],
               shops: [
                 new Shop(
-                  'Dino Shop'
-                )
-              ]
-            }
-          ]
+                  'Dino Shop',
+                ),
+              ],
+            },
+          ],
         },
         {
           name: 'Tomorrowland',
-          sublands: [
-            {
-              name: 'Tomorrowland',
-              attractions: [
-                new Attraction(
-                  'Buzz Lightyear: Star Command',
-                  ticketType.C,
-                  attractionType.shooter
-                ),
-                new Attraction(
-                  'Mission: Space',
-                  ticketType.E,
-                  attractionType.simulator
-                ),
-                new Attraction(
-                  'Visionarium',
-                  ticketType.D,
-                  attractionType.dark
-                ),
-                new Attraction(
-                  'PeopleMover',
-                  ticketType.C,
-                  attractionType.transportation
-                ),
-                new Attraction(
-                  'AstroJets',
-                  ticketType.C,
-                  attractionType.flat
-                ),
-                new Attraction(
-                  'Galactic Zoo',
-                  ticketType.A,
-                  attractionType.walkthrough
-                ),
-                new Attraction(
-                  'Plecteau\'s Adventures',
-                  ticketType.B,
-                  attractionType.show
-                ),
-                new Attraction(
-                  'Space Mountain',
-                  ticketType.E,
-                  attractionType.coaster
-                ),
-                new Attraction(
-                  'IGC Energy Tour',
-                  ticketType.E,
-                  attractionType.simulator
-                )
-              ]
-            }
-          ]
+          attractions: [
+            new Attraction(
+              'Buzz Lightyear: Star Command',
+              ticketType.C,
+              attractionType.shooter,
+            ),
+            new Attraction(
+              'Mission: Space',
+              ticketType.E,
+              attractionType.simulator,
+            ),
+            new Attraction(
+              'Visionarium',
+              ticketType.D,
+              attractionType.dark,
+            ),
+            new Attraction(
+              'PeopleMover',
+              ticketType.C,
+              attractionType.transportation,
+            ),
+            new Attraction(
+              'AstroJets',
+              ticketType.C,
+              attractionType.flat,
+            ),
+            new Attraction(
+              'Galactic Zoo',
+              ticketType.A,
+              attractionType.walkthrough,
+            ),
+            new Attraction(
+              'Plecteau\'s Adventures',
+              ticketType.B,
+              attractionType.show,
+            ),
+            new Attraction(
+              'Space Mountain',
+              ticketType.E,
+              attractionType.coaster,
+            ),
+            new Attraction(
+              'IGC Energy Tour',
+              ticketType.E,
+              attractionType.simulator,
+            ),
+          ],
         },
         {
           name: 'Frontierland',
@@ -392,44 +402,44 @@ export default {
             new Attraction(
               'Western River Expedition',
               ticketType.E,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               'Thunder Mountain Railroad',
               ticketType.E,
-              attractionType.coaster
+              attractionType.coaster,
             ),
             new Attraction(
               'Riverboat',
               ticketType.B,
-              attractionType.transportation
+              attractionType.transportation,
             ),
             new Attraction(
               'Country Bear Jamboree',
               ticketType.C,
-              attractionType.animatronic
+              attractionType.animatronic,
             ),
             new Attraction(
               'Explorer Canoes',
               ticketType.B,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               'Big Thunder Ranch',
               ticketType.A,
-              attractionType.play
+              attractionType.play,
             ),
             new Attraction(
               'Shootin\' Gallery',
               ticketType.A,
-              attractionType.play
+              attractionType.play,
             ),
             new Attraction(
               'Exploration Trails',
               ticketType.A,
-              attractionType.walkthrough
-            )
-          ]
+              attractionType.walkthrough,
+            ),
+          ],
         },
         {
           name: 'Fantasyland',
@@ -440,14 +450,14 @@ export default {
                 new Attraction(
                   'Carousel',
                   ticketType.C,
-                  attractionType.flat
-                )
+                  attractionType.flat,
+                ),
               ],
               other: [
                 new Other(
-                  'Cherry Blossom Garden'
-                )
-              ]
+                  'Cherry Blossom Garden',
+                ),
+              ],
             },
             {
               name: 'Neverland',
@@ -455,19 +465,19 @@ export default {
                 new Attraction(
                   'Peter Pan\'s Flight',
                   ticketType.E,
-                  attractionType.dark
+                  attractionType.dark,
                 ),
                 new Attraction(
                   'Pixie Hollow',
                   ticketType.B,
-                  attractionType.character
+                  attractionType.character,
                 ),
                 new Attraction(
                   'Exploration Trails',
                   ticketType.A,
-                  attractionType.walkthrough
-                )
-              ]
+                  attractionType.walkthrough,
+                ),
+              ],
             },
             {
               name: 'Storybook Land',
@@ -475,39 +485,39 @@ export default {
                 new Attraction(
                   'Storybook Land Canal Boats',
                   ticketType.C,
-                  attractionType.boat
+                  attractionType.boat,
                 ),
                 new Attraction(
                   'Circus Train through Storybook Land',
                   ticketType.C,
-                  attractionType.coaster
+                  attractionType.coaster,
                 ),
                 new Attraction(
                   'Seven Dwarf\'s Mine Train',
                   ticketType.D,
-                  attractionType.coaster
+                  attractionType.coaster,
                 ),
                 new Attraction(
                   'Cinderella',
                   ticketType.D,
-                  attractionType.dark
+                  attractionType.dark,
                 ),
                 new Attraction(
                   'Beauty and the Beast',
                   ticketType.D,
-                  attractionType.dark
+                  attractionType.dark,
                 ),
                 new Attraction(
                   'Tangled',
                   ticketType.D,
-                  attractionType.boat
+                  attractionType.boat,
                 ),
                 new Attraction(
                   'Fantasyland Theater',
                   ticketType.C,
-                  attractionType.show
-                )
-              ]
+                  attractionType.show,
+                ),
+              ],
             },
             {
               name: 'Wonderland',
@@ -515,23 +525,23 @@ export default {
                 new Attraction(
                   'Alice\'s Curious Labyrinth',
                   ticketType.B,
-                  attractionType.play
+                  attractionType.play,
                 ),
                 new Attraction(
                   'Alice\'s Adventures in Wonderland',
                   ticketType.E,
-                  attractionType.dark
+                  attractionType.dark,
                 ),
                 new Attraction(
                   'Very Mad Tea Party',
                   ticketType.C,
-                  attractionType.flat
-                )
-              ]
-            }
-          ]
-        }
-      ]
+                  attractionType.flat,
+                ),
+              ],
+            },
+          ],
+        },
+      ],
     },
     {
       name: 'Disneysea',
@@ -542,19 +552,19 @@ export default {
             new Attraction(
               'Disneysea Touring',
               ticketType.C,
-              attractionType.transportation
+              attractionType.transportation,
             ),
             new Attraction(
               '',
               ticketType.A, // or B
-              null
+              null,
             ),
             new Attraction(
               '',
               ticketType.B, // or A
-              null
-            )
-          ]
+              null,
+            ),
+          ],
         },
         {
           name: 'Mediterranean Harbor',
@@ -562,19 +572,19 @@ export default {
             new Attraction(
               'Da Vinci Ride',
               ticketType.D, // or E,
-              null
+              null,
             ),
             new Attraction(
               'Gondola',
               ticketType.B,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               'Exploration Trails',
               ticketType.A,
-              attractionType.walkthrough
-            )
-          ]
+              attractionType.walkthrough,
+            ),
+          ],
         },
         {
           name: 'Mermaid Lagoon',
@@ -582,29 +592,29 @@ export default {
             new Attraction(
               'Voyage of the Little Mermaid',
               ticketType.D,
-              attractionType.dark
+              attractionType.dark,
             ),
             new Attraction(
               'Jumping Jellyfish',
               ticketType.C,
-              attractionType.flat
+              attractionType.flat,
             ),
             new Attraction(
               'Flying Fish',
               ticketType.B,
-              attractionType.flat
+              attractionType.flat,
             ),
             new Attraction(
               'The Whirlpool',
               ticketType.C,
-              attractionType.flat
+              attractionType.flat,
             ),
             new Attraction(
               '',
               ticketType.C,
-              attractionType.flat
-            )
-          ]
+              attractionType.flat,
+            ),
+          ],
         },
         {
           name: 'Mysterious Island',
@@ -612,24 +622,24 @@ export default {
             new Attraction(
               '20,000 Leagues',
               ticketType.E,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               'Around the World',
               ticketType.D,
-              attractionType.dark
+              attractionType.dark,
             ),
             new Attraction(
               'From the Earth to the Moon',
               ticketType.E,
-              attractionType.coaster
+              attractionType.coaster,
             ),
             new Attraction(
               'Exploration Trails',
               ticketType.A,
-              attractionType.walkthrough
-            )
-          ]
+              attractionType.walkthrough,
+            ),
+          ],
         },
         {
           name: 'Point Discovery',
@@ -637,19 +647,19 @@ export default {
             new Attraction(
               'StormRider',
               ticketType.D,
-              attractionType.simulator
+              attractionType.simulator,
             ),
             new Attraction(
               '',
               ticketType.E,
-              attractionType.coaster
+              attractionType.coaster,
             ),
             new Attraction(
               '',
               ticketType.C, // or D
-              null
-            )
-          ]
+              null,
+            ),
+          ],
         },
         {
           name: 'The Kingdom of Arrendale',
@@ -657,24 +667,24 @@ export default {
             new Attraction(
               'Frozen Ever After',
               ticketType.D,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               'Icetopia',
               ticketType.C,
-              attractionType.flat
+              attractionType.flat,
             ),
             new Attraction(
               'A Frozen Celebration',
               ticketType.C,
-              attractionType.show
+              attractionType.show,
             ),
             new Attraction(
               'Olaf\'s Summer Extravananza',
               ticketType.C,
-              attractionType.flat
-            )
-          ]
+              attractionType.flat,
+            ),
+          ],
         },
         {
           name: 'Pirate Cove',
@@ -682,19 +692,19 @@ export default {
             new Attraction(
               'Pirates of the Caribbean',
               ticketType.E,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               'Jack Sparrow Show',
               ticketType.C,
-              attractionType.show
+              attractionType.show,
             ),
             new Attraction(
               'Exploration Trails',
               ticketType.A,
-              attractionType.walkthrough
-            )
-          ]
+              attractionType.walkthrough,
+            ),
+          ],
         },
         {
           name: 'The Bayou',
@@ -702,21 +712,21 @@ export default {
             new Attraction(
               'The Princess and the Frog',
               ticketType.C,
-              attractionType.dark
+              attractionType.dark,
             ),
             new Attraction(
               'The Haunted Mansion',
               ticketType.E,
-              attractionType.dark
+              attractionType.dark,
             ),
             new Attraction(
               '',
               ticketType.A, // or B,
-              null
-            )
-          ]
-        }
-      ]
+              null,
+            ),
+          ],
+        },
+      ],
     },
     {
       name: 'Disney Earth',
@@ -730,19 +740,19 @@ export default {
                 new Attraction(
                   'Mary Poppins',
                   ticketType.D,
-                  attractionType.dark
+                  attractionType.dark,
                 ),
                 new Attraction(
                   'Double Decker Bus',
                   ticketType.B,
-                  attractionType.transportation
+                  attractionType.transportation,
                 ),
                 new Attraction(
                   '',
                   ticketType.E,
-                  null
-                )
-              ]
+                  null,
+                ),
+              ],
             },
             {
               name: 'Germany',
@@ -750,14 +760,14 @@ export default {
                 new Attraction(
                   'Rhine River Cruise',
                   ticketType.C,
-                  attractionType.boat
+                  attractionType.boat,
                 ),
                 new Attraction(
                   '',
                   ticketType.B,
-                  null
-                )
-              ]
+                  null,
+                ),
+              ],
             },
             {
               name: 'France',
@@ -765,14 +775,14 @@ export default {
                 new Attraction(
                   'Ratatouille',
                   ticketType.D,
-                  attractionType.dark
+                  attractionType.dark,
                 ),
                 new Attraction(
                   'French History musical',
                   ticketType.C,
-                  attractionType.show
-                )
-              ]
+                  attractionType.show,
+                ),
+              ],
             },
             {
               name: 'Denmark',
@@ -780,11 +790,11 @@ export default {
                 new Attraction(
                   '',
                   ticketType.B, // or C
-                  null
-                )
-              ]
-            }
-          ]
+                  null,
+                ),
+              ],
+            },
+          ],
         },
         {
           name: 'Asia',
@@ -795,19 +805,19 @@ export default {
                 new Attraction(
                   'Expedition Everest',
                   ticketType.E,
-                  attractionType.coaster
+                  attractionType.coaster,
                 ),
                 new Attraction(
                   'Kali River Rapids',
                   ticketType.D,
-                  attractionType.boat
+                  attractionType.boat,
                 ),
                 new Attraction(
                   'Exploration Trails',
                   ticketType.A,
-                  attractionType.walkthrough
-                )
-              ]
+                  attractionType.walkthrough,
+                ),
+              ],
             },
             {
               name: 'India',
@@ -815,9 +825,9 @@ export default {
                 new Attraction(
                   'Jungle Book',
                   ticketType.D,
-                  attractionType.dark
-                )
-              ]
+                  attractionType.dark,
+                ),
+              ],
             },
             {
               name: 'Japan',
@@ -825,14 +835,14 @@ export default {
                 new Attraction(
                   'Bullet Train',
                   ticketType.D,
-                  attractionType.simulator
+                  attractionType.simulator,
                 ),
                 new Attraction(
                   '',
                   ticketType.B, // or C
-                  null
-                )
-              ]
+                  null,
+                ),
+              ],
             },
             {
               name: 'China',
@@ -840,16 +850,16 @@ export default {
                 new Attraction(
                   'Mulan',
                   ticketType.C,
-                  attractionType.show
+                  attractionType.show,
                 ),
                 new Attraction(
                   '',
                   ticketType.C,
-                  attractionType.boat
-                )
-              ]
-            }
-          ]
+                  attractionType.boat,
+                ),
+              ],
+            },
+          ],
         },
         {
           name: 'Africa',
@@ -860,19 +870,19 @@ export default {
                 new Attraction(
                   '',
                   ticketType.D, // or E
-                  null
+                  null,
                 ),
                 new Attraction(
                   'Treehouse',
                   ticketType.B,
-                  null
+                  null,
                 ),
                 new Attraction(
                   'Exploration Trails',
                   ticketType.A,
-                  attractionType.walkthrough
-                )
-              ]
+                  attractionType.walkthrough,
+                ),
+              ],
             },
             {
               name: 'Savannah',
@@ -880,16 +890,16 @@ export default {
                 new Attraction(
                   'Festival of the Lion King',
                   ticketType.D,
-                  attractionType.show
+                  attractionType.show,
                 ),
                 new Attraction(
                   'Kilimanjaro Safaris',
                   ticketType.E,
-                  attractionType.other
-                )
-              ]
-            }
-          ]
+                  attractionType.other,
+                ),
+              ],
+            },
+          ],
         },
         {
           name: 'World Plaza',
@@ -897,19 +907,19 @@ export default {
             new Attraction(
               'Soarin\'',
               ticketType.E,
-              attractionType.simulator
+              attractionType.simulator,
             ),
             new Attraction(
               'it\'s a small world',
               ticketType.D,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               'Heritage Stage',
               ticketType.C,
-              attractionType.show
-            )
-          ]
+              attractionType.show,
+            ),
+          ],
         },
         {
           name: 'Oceania',
@@ -920,9 +930,9 @@ export default {
                 new Attraction(
                   'Finding Nemo: The Musical',
                   ticketType.D,
-                  attractionType.show
-                )
-              ]
+                  attractionType.show,
+                ),
+              ],
             },
             {
               name: 'Outback',
@@ -930,16 +940,16 @@ export default {
                 new Attraction(
                   'Outback Expeditions',
                   ticketType.E,
-                  attractionType.other
+                  attractionType.other,
                 ),
                 new Attraction(
                   'Exploration Trail',
                   ticketType.A,
-                  attractionType.walkthrough
-                )
-              ]
-            }
-          ]
+                  attractionType.walkthrough,
+                ),
+              ],
+            },
+          ],
         },
         {
           name: 'Americas',
@@ -950,14 +960,14 @@ export default {
                 new Attraction(
                   'Raft Ride',
                   ticketType.E,
-                  attractionType.boat
+                  attractionType.boat,
                 ),
                 new Attraction(
                   '',
                   ticketType.B,
-                  null
-                )
-              ]
+                  null,
+                ),
+              ],
             },
             {
               name: 'Mexico',
@@ -965,14 +975,14 @@ export default {
                 new Attraction(
                   'Coco ride',
                   ticketType.D,
-                  attractionType.dark
+                  attractionType.dark,
                 ),
                 new Attraction(
                   '',
                   ticketType.A, // or B
-                  null
-                )
-              ]
+                  null,
+                ),
+              ],
             },
             {
               name: 'Brazil',
@@ -980,18 +990,18 @@ export default {
                 new Attraction(
                   '',
                   ticketType.C, // or D
-                  null
+                  null,
                 ),
                 new Attraction(
                   'Exploration Trail',
                   ticketType.A,
-                  attractionType.walkthrough
-                )
-              ]
-            }
-          ]
-        }
-      ]
+                  attractionType.walkthrough,
+                ),
+              ],
+            },
+          ],
+        },
+      ],
     },
     {
       name: 'Mythica',
@@ -1002,14 +1012,14 @@ export default {
             new Attraction(
               'Golden Celebrations (idk)',
               ticketType.C,
-              attractionType.show
+              attractionType.show,
             ),
             new Attraction(
               'Exploration Trail',
               ticketType.A,
               attractionType.walkthrough,
-            )
-          ]
+            ),
+          ],
         },
         {
           name: 'Beastlie Kingdomme',
@@ -1017,29 +1027,29 @@ export default {
             new Attraction(
               'Race the Dragon',
               ticketType.E,
-              attractionType.coaster
+              attractionType.coaster,
             ),
             new Attraction(
               'Fantasia Gardens',
               ticketType.C,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               'Beastlie Carousel',
               ticketType.B,
-              attractionType.flat
+              attractionType.flat,
             ),
             new Attraction(
               '',
               ticketType.C, // or D
-              null
+              null,
             ),
             new Attraction(
               'Exploration Trail',
               ticketType.A,
-              attractionType.walkthrough
-            )
-          ]
+              attractionType.walkthrough,
+            ),
+          ],
         },
         {
           name: 'Atlantis',
@@ -1047,29 +1057,29 @@ export default {
             new Attraction(
               'Flume Ride',
               ticketType.D,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               'Poseidon\'s Adventure',
               ticketType.E,
-              attractionType.dark
+              attractionType.dark,
             ),
             new Attraction(
               '',
               ticketType.D,
-              null
+              null,
             ),
             new Attraction(
               '',
               ticketType.B, // or C
-              null
+              null,
             ),
             new Attraction(
               'Exploration Trail',
               ticketType.A,
-              attractionType.walkthrough
-            )
-          ]
+              attractionType.walkthrough,
+            ),
+          ],
         },
         {
           name: 'Olympus',
@@ -1077,29 +1087,29 @@ export default {
             new Attraction(
               'Gods Among Us',
               ticketType.D,
-              attractionType.dark
+              attractionType.dark,
             ),
             new Attraction(
               'Temple of Hades',
               ticketType.E,
-              attractionType.coaster
+              attractionType.coaster,
             ),
             new Attraction(
               'Odyssey',
               ticketType.C,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               'Coliseum',
               ticketType.C,
-              attractionType.show
+              attractionType.show,
             ),
             new Attraction(
               'Labyrinth',
               ticketType.B,
-              attractionType.walkthrough
-            )
-          ]
+              attractionType.walkthrough,
+            ),
+          ],
         },
         {
           name: 'Shangri La',
@@ -1107,19 +1117,19 @@ export default {
             new Attraction(
               'Coaster through the Clouds',
               ticketType.E,
-              attractionType.coaster
+              attractionType.coaster,
             ),
             new Attraction(
               '',
               ticketType.D,
-              null
+              null,
             ),
             new Attraction(
               'Ropes Course',
               ticketType.B,
-              attractionType.walkthrough
-            )
-          ]
+              attractionType.walkthrough,
+            ),
+          ],
         },
         {
           name: 'Egypt',
@@ -1127,26 +1137,26 @@ export default {
             new Attraction(
               'Revenge of the Mummy',
               ticketType.E,
-              attractionType.dark
+              attractionType.dark,
             ),
             new Attraction(
               'Nile River Cruise',
               ticketType.D,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               '',
               ticketType.B, // or C
-              null
+              null,
             ),
             new Attraction(
               'Maze throug a pyrimid',
               ticketType.A,
-              attractionType.walkthrough
-            )
-          ]
-        }
-      ]
+              attractionType.walkthrough,
+            ),
+          ],
+        },
+      ],
     },
     {
       name: 'Disney Adventure',
@@ -1157,44 +1167,44 @@ export default {
             new Attraction(
               'Star Tours',
               ticketType.D,
-              attractionType.simulator
+              attractionType.simulator,
             ),
             new Attraction(
               'Rise of the Resistance',
               ticketType.E,
-              attractionType.dark
+              attractionType.dark,
             ),
             new Attraction(
               'Millennium Falcon: Smuggler\'s Run',
               ticketType.E,
-              attractionType.simulator
+              attractionType.simulator,
             ),
             new Attraction(
               'Pod Race',
               ticketType.D,
-              attractionType.coaster
+              attractionType.coaster,
             ),
             new Attraction(
               'Bantha peoplemover',
               ticketType.C,
-              attractionType.transportation
+              attractionType.transportation,
             ),
             new Attraction(
               'Jedi Training Academy',
               ticketType.C,
-              attractionType.show
+              attractionType.show,
             ),
             new Attraction(
               '',
               ticketType.B,
-              null
+              null,
             ),
             new Attraction(
               'Exploration Trail',
               ticketType.A,
-              attractionType.walkthrough
-            )
-          ]
+              attractionType.walkthrough,
+            ),
+          ],
         },
         {
           name: 'Marvel',
@@ -1205,14 +1215,14 @@ export default {
                 new Attraction(
                   'WWII Cap Ride',
                   ticketType.D,
-                  null
+                  null,
                 ),
                 new Attraction(
                   '',
                   ticketType.B,
-                  null
-                )
-              ]
+                  null,
+                ),
+              ],
             },
             {
               name: 'Stark Expo',
@@ -1220,19 +1230,19 @@ export default {
                 new Attraction(
                   'Stark Expo Presentation',
                   ticketType.C,
-                  attractionType.show
+                  attractionType.show,
                 ),
                 new Attraction(
                   'Avengers Assemble',
                   ticketType.E,
-                  attractionType.coaster
+                  attractionType.coaster,
                 ),
                 new Attraction(
                   'Iron Man Experience',
                   ticketType.D,
-                  attractionType.simulator
-                )
-              ]
+                  attractionType.simulator,
+                ),
+              ],
             },
             {
               name: 'Asgard',
@@ -1240,16 +1250,16 @@ export default {
                 new Attraction(
                   'Journey to Asgard',
                   ticketType.D,
-                  attractionType.dark
+                  attractionType.dark,
                 ),
                 new Attraction(
                   'Entertainment ?',
                   ticketType.B, // or C
-                  attractionType.show
-                )
-              ]
-            }
-          ]
+                  attractionType.show,
+                ),
+              ],
+            },
+          ],
         },
         {
           name: 'Avatar',
@@ -1257,24 +1267,24 @@ export default {
             new Attraction(
               'Flight of Passage',
               ticketType.E,
-              attractionType.simulator
+              attractionType.simulator,
             ),
             new Attraction(
               'Navi River Journey',
               ticketType.D,
-              attractionType.boat
+              attractionType.boat,
             ),
             new Attraction(
               '',
               ticketType.D,
-              attractionType.coaster
+              attractionType.coaster,
             ),
             new Attraction(
               'Exploration Trail',
               ticketType.A,
-              attractionType.walkthrough
-            )
-          ]
+              attractionType.walkthrough,
+            ),
+          ],
         },
         {
           name: 'Incredibles',
@@ -1282,24 +1292,24 @@ export default {
             new Attraction(
               'Pod Transportation',
               ticketType.C,
-              attractionType.transportation
+              attractionType.transportation,
             ),
             new Attraction(
               '',
               ticketType.E,
-              attractionType.dark
+              attractionType.dark,
             ),
             new Attraction(
               '',
               ticketType.B,
-              null
+              null,
             ),
             new Attraction(
               'Exploration Trail',
               ticketType.A,
-              attractionType.walkthrough
-            )
-          ]
+              attractionType.walkthrough,
+            ),
+          ],
         },
         {
           name: 'Monsters Inc',
@@ -1307,19 +1317,19 @@ export default {
             new Attraction(
               'Door Coaster',
               ticketType.E,
-              attractionType.coaster
+              attractionType.coaster,
             ),
             new Attraction(
               'Monster\'s Inc Laugh Floor',
               ticketType.C,
-              attractionType.show
+              attractionType.show,
             ),
             new Attraction(
               'Something for Monsters U',
               ticketType.A, // or B,
-              null
-            )
-          ]
+              null,
+            ),
+          ],
         },
         {
           name: 'Zootopia',
@@ -1327,19 +1337,19 @@ export default {
             new Attraction(
               '',
               ticketType.E,
-              attractionType.dark
+              attractionType.dark,
             ),
             new Attraction(
               '',
               ticketType.C,
-              attractionType.flat
+              attractionType.flat,
             ),
             new Attraction(
               '',
               ticketType.C,
-              null
-            )
-          ]
+              null,
+            ),
+          ],
         },
         {
           name: 'a bug\'s land',
@@ -1347,32 +1357,32 @@ export default {
             new Attraction(
               'It\'s Tough to be a Bug',
               ticketType.C,
-              attractionType.film
+              attractionType.film,
             ),
             new Attraction(
               'Flik\'s Flyers',
               ticketType.C,
-              attractionType.flat
+              attractionType.flat,
             ),
             new Attraction(
               'Heimlich\'s Chew Chew Train',
               ticketType.B,
-              attractionType.flat
+              attractionType.flat,
             ),
             new Attraction(
               'Francis\' Ladybug Boogie',
               ticketType.B,
-              attractionType.flat
+              attractionType.flat,
             ),
             new Attraction(
               'Tuck and Roll\'s Drive \'em Buggies',
               ticketType.B,
-              attractionType.flat
-            )
-          ]
-        }
-      ]
-    }
+              attractionType.flat,
+            ),
+          ],
+        },
+      ],
+    },
   ],
   hotelAreas: [
     {
@@ -1381,8 +1391,8 @@ export default {
         'The Disneyland Hotel',
         'Fantasy Hotel',
         'Frontier Hotel',
-        'Tomorrow Hotel'
-      ]
+        'Tomorrow Hotel',
+      ],
     },
     {
       name: 'The Resorts of the World',
@@ -1393,8 +1403,8 @@ export default {
         'Mediterranean Harbor Resort',
         'African Savanna Resort',
         'Arabian Resort',
-        'French Resort'
-      ]
+        'French Resort',
+      ],
     },
     {
       name: 'The Resorts of the United States',
@@ -1405,35 +1415,36 @@ export default {
         'Port Orleans Resort',
         'Mountain Lodge',
         'Saratoga Sprints Resort',
-        'Key West Resort'
-      ]
+        'Key West Resort',
+      ],
     },
     {
       name: 'Other',
       hotels: [
         'Wilderness Cabins and Campground',
         'The Boardwalk Hotel',
-        'The Treehouse Resort'
-      ]
-    }
+        'The Treehouse Resort',
+      ],
+    },
   ],
   shoppingAndEntertainmentDistricts: [
     {
-      name: 'Hollywood Plaza'
+      name: 'Hollywood Plaza',
     },
     {
-      name: 'Electricity District'
+      name: 'Electricity District',
     },
     {
-      name: 'Boardwalk'
-    }
+      name: 'Boardwalk',
+    },
   ],
   waterParks: [
     {
-      name: 'Pirate Cove'
+      name: 'Pirate Cove',
     },
     {
-      name: 'Volcano Bay'
-    }
-  ]
+      name: 'Volcano Bay',
+    },
+  ],
 }
+;
