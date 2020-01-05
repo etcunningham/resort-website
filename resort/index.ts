@@ -48,7 +48,7 @@ class Other {
   constructor(public name: string, public description?: string) { }
 }
 
-const resort = {
+export default {
   parks: [
     {
       name: 'Disneyland Park',
