@@ -15,6 +15,9 @@
           <b-th>{{attraction.type}}</b-th>
           <b-th>{{attraction.ticket}}</b-th>
         </b-tr>
+        <b-tr>
+          {{attraction.description}}
+        </b-tr>
       </b-tbody>
     </b-table-simple>
   </div>
@@ -28,8 +31,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 h1, h2 {
   font-weight: normal;
 }

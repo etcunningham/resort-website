@@ -1,5 +1,5 @@
 <template>
-  <div class="land collapsible">
+  <div class="land padded">
     <b-button block v-b-toggle="land.name">
       {{land.name}}
     </b-button>
@@ -7,7 +7,7 @@
       <div class="sublands" v-if="land.sublands" >
         <land v-for="land in land.sublands" v-bind:key="land.name" v-bind:land="land" />
       </div>
-      <div class="attractions collapsible" v-if="land.attractions" >
+      <div class="attractions padded" v-if="land.attractions" >
         <b-button block v-b-toggle="land.name + '-attractions'" variant="primary">
           Attractions
         </b-button>
@@ -15,7 +15,7 @@
           <b-table :items="land.attractions" />
         </b-collapse>
       </div>
-      <div class="shops collapsible" v-if="land.shopping">
+      <div class="shops padded" v-if="land.shopping">
         <b-button block v-b-toggle="land.name + '-shops'" variant="primary">
           Shops
         </b-button>
@@ -23,7 +23,7 @@
           <b-table :items="land.shopping" />
         </b-collapse>
       </div>
-      <div class="restaurants collapsible" v-if="land.dining">
+      <div class="restaurants padded" v-if="land.dining">
         <b-button block v-b-toggle="land.name + '-restaurants'" variant="primary">
           Restaurants
         </b-button>
@@ -31,7 +31,7 @@
           <b-table :items="land.dining" />
         </b-collapse>
       </div>
-      <div class="other collapsible" v-if="land.other">
+      <div class="other padded" v-if="land.other">
         <b-button block v-b-toggle="land.name + '-other'" variant="primary">
           Other
         </b-button>
@@ -56,8 +56,7 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 h1, h2 {
   font-weight: normal;
 }
@@ -76,7 +75,7 @@ a {
   color: #35495E;
 }
 
-.collapsible {
+.padded {
   padding-right:5%;
   padding-left:5%;
   padding-top:10px;

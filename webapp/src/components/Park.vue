@@ -1,15 +1,18 @@
 <template>
-  <div class="park">
-    <h2>{{park.name}}</h2>
-    <stats v-bind:statsFor="park" class="collapsible"/>
-    <land v-for="land in park.lands" v-bind:key="land.name" v-bind:land="land" />
+  <div class="park padded" href="hello">
+    <b-card>
+      <h2>{{park.name}}</h2>
+      <stats v-bind:statsFor="park" class="collapsible"/>
+      <land v-for="land in park.lands" v-bind:key="land.name" v-bind:land="land" />
+    </b-card>
   </div>
 </template>
 
 <script>
 
-import land from './Land';
-import stats from './Stats';
+import land from '@/components/Land';
+import stats from '@/components/Stats';
+import model from '../model';
 
 export default {
   name: 'park',
@@ -17,12 +20,17 @@ export default {
     land,
     stats,
   },
-  props: ['park'],
+  props: ['parkName'],
+  data() {
+    const park = model.resort.parks.find(parkChoice => parkChoice.name === this.parkName);
+    return {
+      park,
+    };
+  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 h1,
 h2 {
   font-weight: normal;

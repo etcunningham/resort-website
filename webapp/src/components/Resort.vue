@@ -6,8 +6,8 @@
 
 <script>
 
-import resort from '../model';
-import parks from './Parks';
+import parks from '@/components/Parks';
+import model from '../model';
 
 export default {
   name: 'resort',
@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      resort,
+      resort: model.resort,
     };
   },
 };
@@ -40,11 +40,5 @@ li {
 
 a {
   color: #35495E;
-}
-
-.resort {
-  padding-left:5%;
-  padding-right:5%;
-  padding-bottom:5%;
 }
 </style>
