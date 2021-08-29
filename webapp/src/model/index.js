@@ -24,8 +24,16 @@ const attractionType = {
   character: 'Meet & Greet',
   flume: 'Flume',
   exhibit: 'Exhibit',
+  animalRide: 'Live Animal Ride',
   other: 'Other',
   tbd: 'TBD',
+};
+
+const entertainmentType = {
+  atmosphere: 'Atmoshpere',
+  parade: 'Parade',
+  nighttime: 'Nighttime Spectacular',
+  other: 'Other',
 };
 
 const diningType = {
@@ -41,6 +49,14 @@ class Attraction {
   constructor(name, ticket, type, description) {
     this.name = name || 'TBD';
     this.ticket = ticket;
+    this.type = type || 'TBD';
+    if (description) this.description = description;
+  }
+}
+
+class Entertainment {
+  constructor(name, type, description) {
+    this.name = name || 'TBD';
     this.type = type || 'TBD';
     if (description) this.description = description;
   }
@@ -114,7 +130,29 @@ const resort = {
                   'Firehouse',
                   ticketType.A,
                   attractionType.exhibit,
-                  'Learn how old fire companies kept their communities safe, and explore a horse drawn fire engine',
+                  'Learn how old fire companies kept their communities safe, and explore an authentic horse drawn fire engine',
+                ),
+              ],
+              entertainment: [
+                new Entertainment(
+                  'Citizens of Main Street',
+                  entertainmentType.atmosphere,
+                  'Meet the citizens of main street, proprietors of local businesses, and even the mayor',
+                ),
+                new Entertainment(
+                  'Flag retreat ceremony',
+                  entertainmentType.other,
+                  'Every day at dusk, watch ceremony that of taking the flag down in Town Square',
+                ),
+                new Entertainment(
+                  'Dapper Dans',
+                  entertainmentType.other,
+                  'A barbershop quartet sings old songs and Disney classics',
+                ),
+                new Entertainment(
+                  'Main Street Philharmonic',
+                  entertainmentType.other,
+                  'An orchestra performance',
                 ),
               ],
               dining: [
@@ -152,6 +190,11 @@ const resort = {
                   'Crystal Palace',
                   diningType.buffet,
                   'Dine under a beautify iron and glass canopy with a fantastic view of the Castle. Buffet with classic American cuisine',
+                ),
+                new Shop(
+                  'Popcorn Stand',
+                  diningType.buffet,
+                  'The Hub has a small popcorn stand',
                 ),
               ],
               shopping: [
@@ -200,10 +243,6 @@ const resort = {
                   '',
                 ),
                 new Shop(
-                  'Small Hub Shop',
-                  '',
-                ),
-                new Shop(
                   'Chapeau',
                   '',
                 ),
@@ -223,6 +262,23 @@ const resort = {
                   ticketType.D,
                   attractionType.animatronic,
                   'Watch an animatronic extravaganza about the history of the United States, and how our diversity and ingenuity brought us to where we are today',
+                ),
+              ],
+              entertainment: [
+                new Entertainment(
+                  'Citizens of Liberty Street',
+                  entertainmentType.atmosphere,
+                  'Meet the revolutionaries who live in Liberty Street',
+                ),
+                new Entertainment(
+                  'Fife and Drum Corps',
+                  entertainmentType.other,
+                  'A revolutionary fife and drum corps performs',
+                ),
+                new Entertainment(
+                  'Voices of Liberty',
+                  entertainmentType.other,
+                  'Listen to a choir perform traditional American songs in the American Adventure lobby',
                 ),
               ],
               dining: [
@@ -276,6 +332,12 @@ const resort = {
                   ticketType.A,
                   attractionType.character,
                   'Meet Aladdin, Jasmine, and Genie.',
+                ),
+              ],
+              entertainment: [
+                new Entertainment(
+                  'Belly Dancers',
+                  entertainmentType.other,
                 ),
               ],
               dining: [
@@ -347,6 +409,16 @@ const resort = {
                   'Travel down these jungle trails at your own pace.',
                 ),
               ],
+              entertainment: [
+                new Entertainment(
+                  'Drum Circle',
+                  entertainmentType.other,
+                ),
+                new Entertainment(
+                  'Polynesian dancers',
+                  entertainmentType.other,
+                ),
+              ],
               dining: [
                 new Restaurant(
                   'Tropical Terrace',
@@ -361,7 +433,7 @@ const resort = {
                 new Restaurant(
                   'Dole Whip Stand',
                   diningType.snack,
-                  'A selection of Dole whip treats',
+                  'A selection of Dole whip treats and other snacks',
                 ),
               ],
               shopping: [
@@ -421,6 +493,13 @@ const resort = {
                   ticketType.A,
                   attractionType.walkthrough,
                   'Explore the land that time forgot, look out over the lake, and meander through the forest and caves. Who knows what you might find.',
+                ),
+              ],
+              entertainment: [
+                new Entertainment(
+                  'Archaelogists',
+                  entertainmentType.other,
+                  'Meet the archaelogists working at the Dig Zone',
                 ),
               ],
               dining: [
@@ -500,6 +579,28 @@ const resort = {
               'An old west themed shooting gallery',
             ),
           ],
+          entertainment: [
+            new Entertainment(
+              'Citizens of Frontierland',
+              entertainmentType.atmosphere,
+              'Meet the settlers and prospectors who call Frontierland their home',
+            ),
+            new Entertainment(
+              'Madame Clementine\'s show',
+              entertainmentType.other,
+              'Madame Clementine puts on a show with piano musicians, dancers, and singers in the Diamond Horseshoe Saloon',
+            ),
+            new Entertainment(
+              'Bank Robbery',
+              entertainmentType.other,
+              'The Frontierland Bank was robbed, watch the sherif and his men try to capture the robbers',
+            ),
+            new Entertainment(
+              'Cowboy singalong',
+              entertainmentType.other,
+              'Sit around the campfire with a cowboy and sing campfire songs',
+            ),
+          ],
           dining: [
             new Restaurant(
               'Diamond Horseshoe Saloon',
@@ -509,7 +610,7 @@ const resort = {
             new Restaurant(
               'Restaurant Next to Thunder Mountain',
               diningType.quick,
-              '',
+              'BBQ joint',
             ),
             new Restaurant(
               'Snacks on parade viewing platform',
@@ -549,7 +650,7 @@ const resort = {
             ),
             new Other(
               'Disneyland Railroad',
-              'The Disneyland Railroad travels along the Thunder Ridge until it reaches Frontierland Station. After it leaves the station, it enters a tunnel. The tunnel leads into the Western River Expedition, where the train travels through and interacts with several show scenes. Exiting Western River Expedition, the Train travels around the Rivers of the Frontier, with a view past a Native American village to Thunder Mountain. It then passes behind Big Thunder Ranch, and into another tunnel. This tunnel contains the Gold Mine Diorama, with a view into a working gold mine. It exists the tunnel into the Great Gorge, with views to the waterfalls and river below. Then it\'s time for another short tunnel before heading into Fantasyland.',
+              'The Disneyland Railroad travels along the Thunder Ridge until it reaches Frontierland Station. After it leaves the station, it enters a tunnel. The tunnel leads into the Western River Expedition, where the train travels through and interacts with several show scenes. Exiting Western River Expedition, the Train travels around the Rivers of the Frontier, with a view past a Native American village to Thunder Mountain. It then passes behind Big Thunder Ranch, and into another tunnel. This tunnel contains the Gold Mine Diorama, with a view into a working gold mine. It exits the tunnel into the Great Gorge, with views to the waterfalls and river below. Then it\'s time for another short tunnel before heading into Fantasyland.',
             ),
           ],
         },
@@ -576,6 +677,13 @@ const resort = {
                   ticketType.B,
                   attractionType.walkthrough,
                   'Explore Neverland, including the Lost Boy\'s Treehouse, Captain Hook\'s Pirate Ship, Skull Rock, and the Mermaid Lagoon.',
+                ),
+              ],
+              entertainment: [
+                new Entertainment(
+                  'Lost Boys and Captain Hook',
+                  entertainmentType.other,
+                  'Watch the Lost Boys play follow the leader before being chased by Captain Hook and his men',
                 ),
               ],
             },
@@ -634,7 +742,7 @@ const resort = {
                   'Woodland Theater',
                   ticketType.D,
                   attractionType.show,
-                  'This fully functioning theater always has a new story to tell.',
+                  'This Broadway theater always has a new story to tell.',
                 ),
                 new Attraction(
                   'Princess Fairytale Hall',
@@ -665,6 +773,37 @@ const resort = {
                   ticketType.A,
                   attractionType.walkthrough,
                   'Travel up to the higher levels of Storybook Castle to see animated stained glass displays portraying the stories of many of your favorite Disney fairytales. Then take a trip to the dungeons, and exit into the caverns under the castle, where the great Dragon lives. Be careful not to wake him!',
+                ),
+              ],
+              entertainment: [
+                new Entertainment(
+                  'Dance Hall Band',
+                  entertainmentType.other,
+                  'A band takes over the Fantasyland Dance Hall each night, sometimes performing polka, or other genres to dance to',
+                ),
+                new Entertainment(
+                  'Storyteller',
+                  entertainmentType.other,
+                  'During the day, a storyteller regails us with fanciful tales in the Fantasyland Dance Hall',
+                ),
+                new Entertainment(
+                  'Castle Stage Show',
+                  entertainmentType.other,
+                ),
+                new Entertainment(
+                  'Fiddlers',
+                  entertainmentType.other,
+                  'A troupe of fiddlers play all your favorite Disney songs',
+                ),
+                new Entertainment(
+                  'One Man Band',
+                  entertainmentType.other,
+                  'A one man band performs in Cherry Park near the carousel',
+                ),
+                new Entertainment(
+                  'Sword in the Stone',
+                  entertainmentType.other,
+                  'Merlin arrives to see if he can find the next King of England who can pull the sword from the stone',
                 ),
               ],
               shops: [
@@ -817,6 +956,13 @@ const resort = {
                   attractionType.character,
                 ),
               ],
+              entertainment: [
+                new Entertainment(
+                  'Marching of the Cards',
+                  entertainmentType.other,
+                  'Watch the cards on their march through Wonderland',
+                ),
+              ],
               shops: [
                 new Shop(
                   'Wonderland Shop',
@@ -837,7 +983,7 @@ const resort = {
                 ),
                 new Other(
                   'Wonderland Woods',
-                  'The woods between Wonderland and Tomorrowland include many curious sights from Wonderland. You might catch a glimpse of the Cheshire Cat, or Tweedle Dee and Tweedle Dum',
+                  'The woods between Wonderland and Tomorrowland include many curious sights from Wonderland. You might catch a glimpse of the Cheshire Cat, Tweedle Dee and Tweedle Dum, or the Singing Flowers',
                 ),
                 new Other(
                   'Disneyland Railroad',
@@ -911,6 +1057,28 @@ const resort = {
               attractionType.darkThrill,
             ),
           ],
+          entertainment: [
+            new Entertainment(
+              'Citizens of Tomorrowland',
+              entertainmentType.atmosphere,
+              'Meet the visitors to the Galactic Expo, who come from planets across the galaxy',
+            ),
+            new Entertainment(
+              'Jet Pack',
+              entertainmentType.other,
+              'Watch a spaceman take off and fly in a jet packabove the Tomorrowland Lagoon',
+            ),
+            new Entertainment(
+              'Expo Presentations',
+              entertainmentType.other,
+              'Watch the presenters on the Main Expo Floor demonstrate their innovations and inventions',
+            ),
+            new Entertainment(
+              'Power of Imagination',
+              entertainmentType.other,
+              'The Dreamfinder and his Figment of Imagination talk and sing about the power of imagination, and leave you inspired believe in yourself and your ideas',
+            ),
+          ],
           dining: [
             new Restaurant(
               'Gorgo\'s Fine Dining',
@@ -956,7 +1124,7 @@ const resort = {
           other: [
             new Other(
               'Disneyland Railroad',
-              'The Disneyland Railroad emerges from the Fairytale Forest Diorama, and passes by the reflection pond. It then passes through a field dotted with circular retention ponds and a great view of Space Mountain. Then it enters the Epcot City Diorama, which is a model of the city Walt Disney proposed for the Florida Project',
+              'The Disneyland Railroad emerges from the Fairytale Forest Diorama, and passes by the reflection pond. It then passes through a field dotted with circular retention ponds and a great view of Space Mountain. Then it enters the Epcot City Diorama, which is a model of the city Walt Disney originally proposed for the Florida Project',
             ),
           ],
         },
@@ -1471,7 +1639,7 @@ const resort = {
                 new Attraction(
                   'Kilimanjaro Safaris',
                   ticketType.E,
-                  attractionType.other,
+                  attractionType.animalRide,
                 ),
                 new Attraction(
                   'Exploration Trail',
@@ -1526,37 +1694,27 @@ const resort = {
           name: 'Oceania',
           sublands: [
             {
-              name: 'Sydney',
+              name: 'Outback',
               attractions: [
+                new Attraction(
+                  'Outback Expeditions',
+                  ticketType.E,
+                  attractionType.animalRide,
+                ),
                 new Attraction(
                   'Finding Nemo: The Musical',
                   ticketType.D,
                   attractionType.show,
                 ),
                 new Attraction(
-                  'Australia Exhibit',
-                  ticketType.A,
-                  attractionType.exhibit,
-                ),
-              ],
-            },
-            {
-              name: 'Outback',
-              attractions: [
-                new Attraction(
-                  'Outback Expeditions',
-                  ticketType.E,
-                  attractionType.other,
-                ),
-                new Attraction(
-                  'Coaster',
-                  ticketType.E,
-                  attractionType.coaster,
-                ),
-                new Attraction(
                   'Exploration Trail',
                   ticketType.B,
                   attractionType.walkthrough,
+                ),
+                new Attraction(
+                  'Australia Exhibit',
+                  ticketType.A,
+                  attractionType.exhibit,
                 ),
               ],
             },
@@ -1611,15 +1769,15 @@ const resort = {
                 new Attraction(
                   'Amazon River Journey',
                   ticketType.D,
-                  attractionType.boat,
+                  attractionType.animalRide,
                 ),
                 new Attraction(
-                  'Raya and the Last Dragon',
+                  'Jungle kiddie coaster',
                   ticketType.C,
                   attractionType.kiddieCoaster,
                 ),
                 new Attraction(
-                  'Meet Raya',
+                  'Meet Somebody',
                   ticketType.A,
                   attractionType.character,
                 ),
@@ -1634,162 +1792,6 @@ const resort = {
         },
       ],
     },
-    // {
-    //   name: 'Mythica',
-    //   imgSrc: 'http://vignette2.wikia.nocookie.net/godofwar/images/d/df/Mt._olympus1_CC.jpg/revision/latest?cb=20120225064601',
-    //   lands: [
-    //     {
-    //       name: 'El Dorado',
-    //       attractions: [
-    //         new Attraction(
-    //           'Golden Celebrations (idk)',
-    //           ticketType.C,
-    //           attractionType.show,
-    //         ),
-    //         new Attraction(
-    //           'Exploration Trail',
-    //           ticketType.A,
-    //           attractionType.walkthrough,
-    //         ),
-    //       ],
-    //     },
-    //     {
-    //       name: 'Beastlie Kingdomme',
-    //       attractions: [
-    //         new Attraction(
-    //           'Race the Dragon',
-    //           ticketType.E,
-    //           attractionType.coaster,
-    //         ),
-    //         new Attraction(
-    //           'Fantasia Gardens',
-    //           ticketType.C,
-    //           attractionType.boat,
-    //         ),
-    //         new Attraction(
-    //           'Beastlie Carousel',
-    //           ticketType.B,
-    //           attractionType.flat,
-    //         ),
-    //         new Attraction(
-    //           '',
-    //           ticketType.C, // or D
-    //           null,
-    //         ),
-    //         new Attraction(
-    //           'Exploration Trail',
-    //           ticketType.A,
-    //           attractionType.walkthrough,
-    //         ),
-    //       ],
-    //     },
-    //     {
-    //       name: 'Atlantis',
-    //       attractions: [
-    //         new Attraction(
-    //           'Flume Ride',
-    //           ticketType.D,
-    //           attractionType.boat,
-    //         ),
-    //         new Attraction(
-    //           'Poseidon\'s Adventure',
-    //           ticketType.E,
-    //           attractionType.darkThrill,
-    //         ),
-    //         new Attraction(
-    //           '',
-    //           ticketType.D,
-    //           null,
-    //         ),
-    //         new Attraction(
-    //           '',
-    //           ticketType.B, // or C
-    //           null,
-    //         ),
-    //         new Attraction(
-    //           'Exploration Trail',
-    //           ticketType.A,
-    //           attractionType.walkthrough,
-    //         ),
-    //       ],
-    //     },
-    //     {
-    //       name: 'Olympus',
-    //       attractions: [
-    //         new Attraction(
-    //           'Gods Among Us',
-    //           ticketType.D,
-    //           attractionType.darkThrill,
-    //         ),
-    //         new Attraction(
-    //           'Temple of Hades',
-    //           ticketType.E,
-    //           attractionType.coaster,
-    //         ),
-    //         new Attraction(
-    //           'Odyssey',
-    //           ticketType.C,
-    //           attractionType.boat,
-    //         ),
-    //         new Attraction(
-    //           'Coliseum',
-    //           ticketType.C,
-    //           attractionType.show,
-    //         ),
-    //         new Attraction(
-    //           'Labyrinth',
-    //           ticketType.B,
-    //           attractionType.walkthrough,
-    //         ),
-    //       ],
-    //     },
-    //     {
-    //       name: 'Shangri La',
-    //       attractions: [
-    //         new Attraction(
-    //           'Coaster through the Clouds',
-    //           ticketType.E,
-    //           attractionType.coaster,
-    //         ),
-    //         new Attraction(
-    //           '',
-    //           ticketType.D,
-    //           null,
-    //         ),
-    //         new Attraction(
-    //           'Ropes Course',
-    //           ticketType.B,
-    //           attractionType.walkthrough,
-    //         ),
-    //       ],
-    //     },
-    //     {
-    //       name: 'Egypt',
-    //       attractions: [
-    //         new Attraction(
-    //           'Revenge of the Mummy',
-    //           ticketType.E,
-    //           attractionType.darkThrill,
-    //         ),
-    //         new Attraction(
-    //           'Nile River Cruise',
-    //           ticketType.D,
-    //           attractionType.boat,
-    //         ),
-    //         new Attraction(
-    //           '',
-    //           ticketType.B, // or C
-    //           null,
-    //         ),
-    //         new Attraction(
-    //           'Maze throug a pyrimid',
-    //           ticketType.A,
-    //           attractionType.walkthrough,
-    //         ),
-    //       ],
-    //     },
-    //   ],
-    // },
     {
       name: 'Disney Adventure',
       imgSrc: 'https://www.concordmonitor.com/getattachment/84641be4-1efc-4a9d-9832-723e394fb9bd/AvatarLand-cmae-050917-ph07',
@@ -2184,8 +2186,7 @@ const resort = {
       name: 'Volcano Bay',
     },
   ],
-}
-;
+};
 
 export default {
   resort,
@@ -2193,3 +2194,10 @@ export default {
   ticketType,
   diningType,
 };
+
+// module.exports = {
+//   resort,
+//   attractionType,
+//   ticketType,
+//   diningType,
+// };
